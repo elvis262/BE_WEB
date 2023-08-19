@@ -1,0 +1,57 @@
+
+.containerConf {
+    max-width: 400px;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    min-width: 30%;
+    min-height: 35%;
+    position: relative;
+}
+.containerConf>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    gap:3.5rem;
+    margin-top: auto;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 2rem;
+}
+.containerConf>h1 {
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.containerConf>p {
+    color: #777;
+    width: 75%;
+    text-align: center;
+    margin: 1.3rem auto
+}
+
+.containerConf>div>button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    min-width: 115px;
+}
+
+.containerConf>button:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/hospital.ico">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/modal.css">
+    <link rel="stylesheet" href="./styles/discConfirm.css">
+    <title>Doctor</title>
+    <script src="./dist/bundle.js" type="module" defer></script>
+</head>
+<body>
+    <nav class="nav">
+        <div class="firstContent">
+            <div class="logo" id="logo">
+                <div class="disconnect" id="disconnect">
+                    <button><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                        <span>
+                            Changer de mot de passe
+                        </span>
+                    </button>
+                    <button class="discBtn" id="discBtn">
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        <span>Se déconnecter</span>
+                    </button>
+                </div>
+            </div>
+            <div id="userInfo" class="userInfo">
+                <span id="userName" class="userName"></span>
+                <span id="userEmail" class="userEmail"></span>
+            </div>    
+            
+        </div>
+        <div id="search" class="search">
+                <input type="text" placeholder="Search by id" id="searchStudent">
+                <button id="search">
+                    <img src="./assets/sss.png" alt="">
+                </button>
+        </div>
+
+    </nav>
+    <div class="main">
+        <div class="aside">
+            <div class="photoContainer">
+                <div id="photo-st" class="photo">
+                    <button id="add" class="add"></button>
+                    <div class="no-student visible" id="no-student">Select a student</div>
+                </div>
+                <button id="reset" class="reset"></button>
+            </div>
+            <div>
+                <div class="studentInfo">
+                    <img src="./assets//user.png" alt="">
+                    <input type="text" readonly placeholder="Etudiant" id="student">
+                </div>
+                <div class="studentInfo">
+                    <img src="./assets/journey.png" alt="">
+                    <input type="text" 
+                    readonly placeholder="matricule" id="matricule-st">
+                </div>    
+                <div class="studentInfo">
+                    <img src="./assets//school.svg" alt="">
+                    <input type="text" readonly placeholder="Ecole" id="school-st">
+                </div>
+                <div class="studentInfo">
+                    <img src="./assets/class.svg" alt="">
+                    <input type="text"
+                    readonly placeholder="Classe" id="classe-st">
+                </div>
+            </div>
+            
+        </div>
+        <div class="container" id="container">
+            <div class="topContainer">  
+                <div class="searchConsultation" id="searchConsultation">
+                    <input type="text" placeholder="searchConsultation" id="inputSrch" class='actif'>
+                    <input type="date" placeholder="inputSrch" id="inputSrch" >
+                    <button id="lunchSearch">
+                        <svg data-name="Layer 1" viewBox="0 0 53 53" id="search" fill="#0000006E"><path d="M10.08 10.08a1 1 0 0 0 1.41 1.41 10.43 10.43 0 0 1 14.73 0 1 1 0 0 0 .71.3 1 1 0 0 0 .7-1.71 12.42 12.42 0 0 0-17.55 0Z"></path><path d="M36.22 29.75a1 1 0 0 0-1.41 0L33 31.58l-1.89-1.9A16.35 16.35 0 0 0 7.29 7.29a16.35 16.35 0 0 0 22.39 23.8l1.9 1.9-1.83 1.82a1 1 0 0 0 0 1.41l14 14a1 1 0 0 0 1.41 0l5.06-5.06a1 1 0 0 0 0-1.41ZM8.71 29A14.35 14.35 0 0 1 29 8.71 14.35 14.35 0 0 1 8.71 29Zm35.73 19.09L31.88 35.52l3.64-3.64 12.57 12.56Z"></path></svg>
+                    </button>
+                    <div id="searchOption" class="searchOption">
+                        <svg  width="24" height="24" id="sliders" fill="#0000006E"><path d="M4 8C1.8 8 0 6.2 0 4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 14c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/><path d="M23 5H7c-.6 0-1-.4-1-1s.4-1 1-1h16c.6 0 1 .4 1 1s-.4 1-1 1zm0 8h-4c-.6 0-1-.4-1-1s.4-1 1-1h4c.6 0 1 .4 1 1s-.4 1-1 1zm-10 0H1c-.6 0-1-.4-1-1s.4-1 1-1h12c.6 0 1 .4 1 1s-.4 1-1 1zm-3 11c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/><path d="M23 21H13c-.6 0-1-.4-1-1s.4-1 1-1h10c.6 0 1 .4 1 1s-.4 1-1 1zM7 21H1c-.6 0-1-.4-1-1s.4-1 1-1h6c.6 0 1 .4 1 1s-.4 1-1 1z"/>
+                        </svg>
+                        <div class="searchOptionContainer" id="searchOptionContainer">
+                            <span class="optionItem actif" option="1">Consulation du jour</span>
+                            <span class="optionItem" option="2">Archives</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="searchInArchives" class="searchInArchives">
+                    <input type="text" id="searchInArchivesinput" placeholder="Search......">
+                    <button id="lunchSearch">
+                        <svg data-name="Layer 1" viewBox="0 0 53 53" id="search" fill="#0000006E"><path d="M10.08 10.08a1 1 0 0 0 1.41 1.41 10.43 10.43 0 0 1 14.73 0 1 1 0 0 0 .71.3 1 1 0 0 0 .7-1.71 12.42 12.42 0 0 0-17.55 0Z"></path><path d="M36.22 29.75a1 1 0 0 0-1.41 0L33 31.58l-1.89-1.9A16.35 16.35 0 0 0 7.29 7.29a16.35 16.35 0 0 0 22.39 23.8l1.9 1.9-1.83 1.82a1 1 0 0 0 0 1.41l14 14a1 1 0 0 0 1.41 0l5.06-5.06a1 1 0 0 0 0-1.41ZM8.71 29A14.35 14.35 0 0 1 29 8.71 14.35 14.35 0 0 1 8.71 29Zm35.73 19.09L31.88 35.52l3.64-3.64 12.57 12.56Z"></path></svg>
+                    </button>
+                </div>
+                <div class="header">
+                    <span>Etudiant</span>
+                    <span>Date de repos</span>
+                    <span>Durée du repos</span>
+                    <span>Date fin de repos</span>
+                </div>
+            </div>
+            <div class="mainContainer" id="mainContainer" consultation="to-day">
+               <div class="nothing visible" id="nothing">Aucune Consultation</div>
+            </div>  
+        </div>
+    </div>
+    <div class="modal" id="modal"></div>
+    <template id="consulationTemplate">
+        <div class="saved" id="saved">
+            <div class="whenever">
+                <div class="savedPhoto" id="savedPhoto"></div>
+                <div class="savedInfo" >
+                    <span class="name" id="name">Alui Ange Elvis</span>
+                    <span class="matricule" id="matricule">21INP00269</span>
+                    <div>
+                        <span class="school" id="school">ESI</span>&#47;<span class="class" id="class">TS-Info2</spanc>
+                    </div>  
+                </div>
+            </div>                   
+            <div class="restStart" id="restStart">12/01/2021 16:39:30</div>
+            <div class="restEnd" id="restEnd">24h</div>
+            <div class="date" id="date">12/01/2021 12:25:30</div>
+            <button class="seeMore" id="seeMore">Voir plus</button>
+        </div>
+      
+    </template>
+    <template id="addModal" >
+        <div class="content">
+            <div class="bgImage"></div>
+            <div>
+                <div class="profile">
+                    <div class="profilePhoto" id="profilePhoto"></div>
+                    <div class="profileInfo" id="profileInfo">
+                        <span class="profileName" id="profileName">Alui Ange Elvis</span>
+                        <div>
+                            <span class="profileSchool" id="profileSchool">ESI</span>&#47;
+                            <span class="profileClass" id="profileClass">TS-Info2</span>
+                        </div>                        
+                    </div>
+                    <button class="save" id="save">&#x2714;</button>
+                </div>
+                <div class="verdicte">
+                    <div id="rest">
+                        <input type="checkbox" name="rest">
+                        <label for="rest">Repos</label>
+                    </div>
+                    <div class="number" id="number">
+                        <label for="rest">Nombre d'heure</label>
+                        <input type="number" name="hourJustified" min="0" value="0">
+                    </div>  
+                </div>
+                
+                <div id="editor" class="editor"></div>
+            </div>
+        </div>
+    </template>
+    <template id="addConsultation">
+        <div class="content">
+            <div class="bgImage"></div>
+            <div>
+                <div class="profile">
+                    <div class="profilePhoto" id="profilePhoto"></div>
+                    <div class="profileInfo" id="profileInfo">
+                        <span class="profileName" id="profileName">Alui Ange Elvis</span>
+                        <div>
+                            <span class="profileSchool" id="profileSchool">ESI</span>&#47;
+                            <span class="profileClass" id="profileClass">TS-Info2</span>
+                        </div>                        
+                    </div>
+                    <button class="save" id="save">&#x2714;</button>
+                </div>
+                <div class="verdicte">
+                    <div id="rest">
+                        <input type="checkbox" name="rest">
+                        <label for="rest">Repos</label>
+                    </div>
+                    <div class="number" id="number">
+                        <label for="rest">Nombre d'heure</label>
+                        <input type="number" name="hourJustified" min="0" value="0">
+                    </div>
+                </div>
+                
+                <div id="editor" class="editor"></div>
+            </div>
+        </div>
+    </template>
+    <template id="disconnectionConfirm">
+        <div class="containerConf">
+            <h1>Confirmation de Déconnexion</h1>
+            <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+            <div>
+                <button id="confirm-button">Confirmer</button>
+                <button id="cancel-button">Annuler</button>
+            </div>
+        </div>
+    </template>
+</body>
+</html>

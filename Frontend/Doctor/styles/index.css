@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&family=Poppins:wght@300&display=swap');
+
+:root{
+    --border-color:#f4f4f4;
+    --border-color2:#5d5d5d;
+    --blue: #0D99FF;
+    --blue2: #077ed3;
+    --red: #D62828;
+    --green: #0ead69;
+}
+
+body,html,*{
+    border: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family:'Inter', sans-serif;
+}
+svg, path{
+    pointer-events: none;
+}
+input{
+    outline: none;
+}
+body{
+    height: 100vh;
+    width: 100%;
+}
+.nav{
+    position: relative;
+    top:0;
+    left:0;
+    display: flex;
+    width:100%;
+    background-color: #111111;
+    height: 3rem;
+    color: white;
+    justify-content: baseline;
+    align-items: center;
+    justify-items: center;
+    z-index: 20;
+}
+.logo,.savedPhoto{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100%;
+}
+.logo{
+    background-image: url(../assets/inp.jpg);
+    height: 2rem;
+    width: 2rem;
+    
+    cursor: pointer;
+}
+
+.firstContent, .userInfo{
+    display: flex;
+    height: 100%;
+}
+.firstContent{
+    padding:.4rem;
+    position: relative;
+    background-color: #111111;
+    z-index: 20;
+}
+.firstContent, .aside{
+    border-right: 1px solid #44444481;
+    width: 20%;
+}
+.disconnect{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    background-color: #262626;
+    z-index: 25;
+    left: 0;
+    bottom: 6rem;
+    padding: .3rem .2rem;
+    text-align: start;
+    border-radius: 5px;
+    opacity: 0;
+    transition: bottom .3s ease-in-out,
+                opacity .3s ease-in-out .3s;
+}
+.disconnect.actif{
+    bottom: -6rem;
+    opacity: 1;
+}
+.disconnect> button{
+    background-color: inherit;
+    color: var(--border-color);
+    width: 100%;
+    height: 3rem;;
+    text-align: start;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: .2rem .3rem;
+    border-radius: 5px;
+}
+.disconnect> button:hover{
+    background-color: #8b8b8b44;
+}
+.userInfo{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    justify-items: baseline;
+    margin-left: 3rem;
+}
+.userName{
+    font-size: 1rem;
+}
+.userEmail{
+    font-size: .6rem;
+    margin-top: 2px;
+}
+.search{
+    height: 85%;
+    display: flex;
+    justify-content: baseline;
+    justify-items: baseline;
+    width: 40%;
+    background-color: #444444;
+    margin-left: 2rem;
+    border-radius:5px;
+}
+.search > input{
+    width: 90%;
+    padding: .3rem;
+    background-color: inherit;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    outline: none;
+    color: white;
+    padding: 0 .7rem;
+    font-size: 1rem;
+    font-weight: 300;
+}
+.search > button{
+    margin-left: auto;
+    background-color: inherit;
+    color:white;
+    height: 100%;
+    width: 3rem;
+    border-radius:5px;
+    text-align: center;
+    cursor: pointer;
+}
+.search > button > svg{
+    width: 25px;
+    height: 25px;
+}
+.main{
+    height: calc(100% - 3rem);
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+}
+.aside{
+    position: relative;
+    top:0;
+    left:0;
+    min-height: 100%;
+    padding-top: 4.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    background-color: #fff;
+}
+.photoContainer{
+    width: 100%;
+    min-height: 30vh;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: .5rem .8rem;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+}
+.photoContainer > div{
+    height: 130px;
+    width: 90%;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+.photo{
+    position: relative;
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.no-student{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    padding: .5rem 1rem;
+    transition: filter .3s ease-in-out;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+}
+.no-student:hover,.topContainer{
+    filter : drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.311))
+}
+.add,.reset{
+    background-color: transparent;
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+    background: #fff url(../assets/add.png) center center no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    border-radius: 100%;
+    transition: transform .3s ease-in-out;
+    pointer-events: none;
+    opacity: 0;
+}
+.add{
+    transform: translate(50%, 50%);
+    bottom:0;
+    right:0;
+}
+.reset{
+    transform: translateX(-50%) rotate(45deg);
+    bottom: 0;
+    left: 50%;
+    cursor: pointer;
+}
+.reset:hover{
+   transform: translateX(-50%) rotate(45deg) scale(1.2) ; 
+}
+.add:hover{
+    transform:translate(50%, 50%) scale(1.2);
+}
+.studentInfo{
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+}
+.studentInfo{
+    width: 100%;
+    padding: .5rem .8rem;
+}
+.studentInfo > img{
+    width: 1.2rem;
+    height: 1.2rem;
+}
+.studentInfo > input{
+    text-align: start;
+    width: 100%;
+    padding-left: .5rem;
+    background-color: inherit;
+}
+.studentInfo:nth-child(1), .studentInfo:nth-child(3){
+    background-color: #f5f5f5;
+}
+.aside > div:nth-child(2){
+    border-bottom: 1px solid var(--border-color);
+}
+.container{
+    height: 100%;
+    width: 80%;
+    padding: 2rem 1.8rem 0 1.8rem ;
+}
+.topContainer{
+    height: 25vh;
+    width: 100%;
+    background-color: var(--border-color);
+    position: relative;
+    border-radius: .3rem;
+}
+.mainContainer{
+    height: calc(100vh - (25vh + 5rem));
+    overflow-y: scroll;
+    padding: 0 .7rem 2rem .7rem;
+    position:relative;
+}
+.mainContainer::-webkit-scrollbar {
+    width: 0; 
+    background-color: transparent; 
+}
+  
+.mainContainer::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+.saved{
+    display: grid;
+    grid-template-columns: 18% 1fr 3rem 1fr 5rem;
+    grid-template-rows: repeat(1,minmax(3.5rem,auto));
+    align-items: center;
+    justify-items: start;
+    background-color: var(--border-color);
+    border-radius: .3rem;
+    padding: 0 .5rem;
+    min-height: 3rem;
+    gap:5rem;
+    margin-top: .6rem;
+    transition: filter .3s ease-in-out;
+    justify-content: start;
+}
+.saved:hover{
+    filter: drop-shadow(0 0 0.2rem var(--blue));
+}
+.savedPhoto{
+    background-image: url(../assets/user.png);
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right:.3rem
+}
+.savedInfo{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    justify-items: space-between;
+    min-width: 15%;
+    font-size: .8rem;
+    /* white-space: nowrap; */
+}
+.name,.rest{
+    font-size: .8rem;
+}
+.class,.school,.matricule{
+    font-size: .6rem
+}
+.restStart,.restEnd,.date{
+    text-align: start;
+    background: #fff;
+    border-radius: .3rem;
+    padding: .3rem .5rem;
+    white-space: nowrap;
+    
+}
+.date{
+    color: var(--blue);
+    text-align: start;
+}
+.restStart{
+    color: var(--red)
+}
+.whenever{
+    display: flex;
+    /* width: 18%; */
+    justify-content: baseline;
+    justify-items:baseline;
+}
+.seeMore{
+    margin-left: auto;
+    padding: .3rem .4rem;
+    background-color: var(--blue);
+    color: white;
+    border-radius: .3rem;
+    cursor: pointer;
+    transition: background-color .3 ease-in-out;
+}
+.seeMore:hover{
+    background-color: var(--blue2);
+}
+.header{
+    padding: .3rem 5rem;
+    display: flex;
+    position:absolute;
+    bottom: 0;
+    gap: 4.5rem;
+    width: 100%;
+    background-color: var(--blue);
+    color: #fefefe;
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+}
+.header > span:nth-child(1){
+    width: 20%;
+}
+.searchConsultation,.searchInArchives{
+    position: absolute;
+    top: .5rem;
+    min-height: 2.5rem;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    border-radius: .3rem;
+    padding-left: .4rem;
+}
+.searchInArchives{
+    right: calc(28% + 2rem);
+    width: 22%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchConsultation{
+    width: 28%;
+    right: 1rem;
+}
+.searchConsultation > input, .searchInArchives > input{
+    height: 100%;
+    padding: .3rem .2rem;
+    border-top-left-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+    width: 75%;
+    outline: none;
+}
+.searchConsultation > button,.searchConsultation > div,.searchInArchives > button{
+    background-color: inherit;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.searchConsultation > button:hover > svg, .searchInArchives > button:hover > svg{
+    fill: #000000b2;
+    transition: fill .3s ease-in-out;
+}
+.searchConsultation > button > img{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+.searchOption{
+    position: relative;
+}
+.searchOptionContainer{
+    min-height: 4rem;
+    min-width: 12rem;
+    position: absolute;
+    transform: translate(-10rem,-.3rem) ;
+    background-color: #fff;
+    border-radius: .3rem;
+    display: flex;
+    flex-direction: column;
+    padding: .5rem 0;
+    z-index: 50;
+    filter : drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.311));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease-in-out;
+}
+.searchOptionContainer > span{
+    padding: .3rem .5rem;
+    color: var(--border-color2);
+}
+.searchOptionContainer > span.actif{
+    background-color: var(--blue);
+    color: #fefefe;
+}
+.visible, div.nothing.visible{
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal{
+    height: 100%;
+    width: 100%;
+    display: none;
+    background-color: #00000047;
+    position: absolute;
+    top:0;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    z-index: 50;
+}
+.nothing{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.3rem;
+    color: var(--border-color2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease-in-out;
+    text-align: center;
+    line-height: 100%;
+}
+#inputSrch{
+    display: none;
+}
+#inputSrch.actif{
+    display: block;
+}

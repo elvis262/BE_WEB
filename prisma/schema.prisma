@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id              Int       @id @default(autoincrement())
+  name            String
+  registration    String    @unique
+  sectorId        Int
+  photo           String?
+  classId         Int 
+  schoolId        Int
+  justifiedTime   Int       @default(0)
+
+  sector          Sector    @relation(fields: [sectorId], references: [id])
+  class           Class     @relation(fields: [classId], references: [id])
+  school          School   @relation(fields: [schoolId], references: [id])
+  consultations   Consultation[]
+}
+
+model Sector {
+  id              Int        @id @default(autoincrement())
+  schoolId        Int?
+  inspectorId     Int?       @unique
+  libelle         String
+  cycleId         Int
+
+  school          School?    @relation(fields: [schoolId], references: [id])
+  inspector       Inspector? @relation(fields: [inspectorId], references: [id])
+  cycle           Cycle?     @relation(fields: [cycleId], references: [id])
+  students        Student[]
+  classes         Class[]
+}
+
+model School {
+  id              Int       @id @default(autoincrement())
+  libelle         String
+
+  sectors         Sector[]
+  inspectors      Inspector[]
+  students        Student[]
+}
+
+model Cycle{
+  id              Int       @id @default(autoincrement())
+  libelle         String
+  sector          Sector[]
+}
+
+model Inspector {
+  id              Int       @id @default(autoincrement())
+  name            String
+  mail            String    @unique
+  password        String
+  schoolId        Int      
+
+  school          School    @relation(fields: [schoolId], references: [id])
+  sector          Sector?
+}
+
+model Class{
+  id              Int       @id @default(autoincrement())
+  libelle         String
+  sectorId        Int
+  sector          Sector    @relation(fields: [sectorId], references: [id])
+  students        Student[]
+}
+
+model Doctor {
+  id              Int       @id @default(autoincrement())
+  name            String
+  mail            String    @unique
+  password        String
+  consultations   Consultation[]
+}
+
+model Consultation {
+  id              Int       @id @default(autoincrement())
+  restDuration    Int       @default(0)
+  date            String
+  diagnostic      Json
+  studentId       Int
+  doctorId        Int
+
+  student         Student   @relation(fields: [studentId], references: [id])
+  doctor          Doctor    @relation(fields: [doctorId], references: [id])
+}
